@@ -7,7 +7,10 @@ require('dotenv').config()
 const { PORT } = process.env
 var db = require('./config/database');
 //hero routes
-var herosRoutes = require('./api/heroes/heros.routes');
+var statisticsRouts = require('./api/statistics/statistics.routes');
+const countriesRouts = require('./api/countries/countries.routes')
+const newsRouts = require('./api/news/news.routes')
+
 var app = express();
 
 //configure bodyparser
@@ -37,8 +40,9 @@ app.use(function(req, res, next) {
 // use express router
 app.use('/api',router);
 //call heros routing
-herosRoutes(router);
-
+statisticsRouts(router);
+countriesRouts(router)
+newsRouts(router)
 // intialise server
 app.listen(PORT, (req, res) => {
     console.log(`Server is running on ${PORT} port.`);
