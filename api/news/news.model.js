@@ -17,7 +17,10 @@ var News = new Schema({
         type: Date,
         required: true
     },
-    // image
+    image: {
+        data:Buffer,
+        contentType: String,
+    }
 }, {
     timestamps: true
 });

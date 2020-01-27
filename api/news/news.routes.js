@@ -1,10 +1,8 @@
 var News = require('./news.controller');
+const multer = require('multer')
 
 module.exports = function(router) {
-
-    // router.get('/countries/map/get', Statistics.getCountriesMap)
-
-    router.post('/news', News.createNews)
+    router.post('/news', multer().single('map'), News.createNews)
     router.get('/news', News.getNews)
     router.get('/news/:id', News.getOneNews)
     router.put('/news/:id', News.updateNews)

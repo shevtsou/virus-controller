@@ -12,6 +12,11 @@ var Country = new Schema({
 }, {
     timestamps: true
 });
+const WorldMap = new Schema({
+    data:Buffer,
+    contentType: String,
+})
 
 const CountryModel = mongoose.model('Country', Country)
-module.exports = {Country: CountryModel};
+const WorldMapModel = mongoose.model('WorldMap', WorldMap)
+module.exports = {Country: CountryModel, WorldMap: WorldMapModel};

@@ -1,5 +1,29 @@
 //@ts-check
-const { Country } = require('./country.model.js');
+const { Country, WorldMap} = require('./country.model.js');
+
+
+exports.getMap = async (req, res, name) => {
+    const map = await WorldMap.findOne().exec()
+    res.json(map)
+}
+
+exports.setMap = async (req, res, name) => {
+    await WorldMap.deleteMany({}).exec()
+    WorldMap.create({
+        data: req.file.buffer,
+        contentType: req.file.mimetype
+    }, (err) => {
+        if(err) {
+            res.json({
+                error : err
+            })
+        } else {
+            res.json({
+                message : "Map setted successfully"
+            })
+        }
+    })
+}
 
 exports.createCountry = async (req, res, name) => {
     Country.create({
