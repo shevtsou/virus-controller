@@ -10,7 +10,7 @@ exports.getMap = async (req, res, name) => {
 exports.setMap = async (req, res, name) => {
     await WorldMap.deleteMany({}).exec()
     WorldMap.create({
-        data: req.file.buffer,
+        data: req.file.buffer.toString('base64'),
         contentType: req.file.mimetype
     }, (err) => {
         if(err) {

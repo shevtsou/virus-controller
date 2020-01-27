@@ -13,7 +13,7 @@ var Country = new Schema({
     timestamps: true
 });
 const WorldMap = new Schema({
-    data:Buffer,
+    data:String,
     contentType: String,
 })
 

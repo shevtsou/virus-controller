@@ -17,9 +17,9 @@ var News = new Schema({
         type: Date,
         required: true
     },
-    image: {
-        data:Buffer,
-        contentType: String,
+    imageUrl: {
+        type: String,
+        require: true,
     }
 }, {
     timestamps: true

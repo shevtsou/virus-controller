@@ -3,14 +3,11 @@ const { News } = require('./news.model.js');
 
 exports.createNews = async (req, res, name) => {
     News.create({
-    title: req.body.title,
+        title: req.body.title,
         description: req.body.description,
         url: req.body.url,
         date: req.body.date,
-        image: {
-            data: req.file.buffer,
-            contentType: req.file.mimetype
-        }
+        imageUrl: req.body.imageUrl
     }, (err, news) => {
         if(err) {
             res.json({

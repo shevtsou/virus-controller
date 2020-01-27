@@ -2,7 +2,7 @@ var Countries = require('./countries.controller');
 const multer = require('multer')
 module.exports = function(router) {
     router.get('/countries/map', Countries.getMap)
-    router.post('/countries/map', multer().single('map'), Countries.setMap)
+    router.post('/countries/map', multer({encoding: 'base64'}).single('map'), Countries.setMap)
 
     router.post('/countries', Countries.createCountry)
     router.get('/countries', Countries.getCountries)
